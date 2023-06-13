@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: maread-api-service
+  labels:
+    app: maread-api
+spec:
+  selector:
+    app: maread-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3010
+  type: NodePort

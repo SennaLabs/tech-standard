@@ -1,0 +1,221 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maread-api-deployment
+  labels:
+    app: maread-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maread-api
+  template:
+    metadata:
+      labels:
+        app: maread-api
+    spec:
+      containers:
+        - name: maread-api
+          image: amazonaws.com/maread-backend
+          env:
+            - name: PORT
+              value: "3010"
+            - name: NODE_ENV
+              value: "${NODE_ENV}"
+            - name: PLAYGROUND_ENABLE
+              value: "${PLAYGROUND_ENABLE}"
+            - name: POSTGRES_HOST
+              value: "${POSTGRES_HOST}"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_USER
+              value: "${POSTGRES_USER}"
+            - name: POSTGRES_PASSWORD
+              value: "${POSTGRES_PASSWORD}"
+            - name: POSTGRES_DATABASE
+              value: "${POSTGRES_DATABASE}"
+            - name: FACEBOOK_CLIENTID
+              value: "${FACEBOOK_CLIENTID}"
+            - name: FACEBOOK_SECRET
+              value: "${FACEBOOK_SECRET}"
+            - name: AWS_S3_ACCESS_KEY
+              value: "${AWS_S3_ACCESS_KEY}"
+            - name: AWS_S3_SECRET_KEY
+              value: "${AWS_S3_SECRET_KEY}"
+            - name: AWS_S3_BUCKET_NAME
+              value: "${AWS_S3_BUCKET_NAME}"
+            - name: FBC_API_KEY
+              value: "${FBC_API_KEY}"
+            - name: FBC_AUTH_DOMAIN
+              value: "${FBC_AUTH_DOMAIN}"
+            - name: FBC_PROJECT_ID
+              value: "${FBC_PROJECT_ID}"
+            - name: FBC_STORAGE_BUCKET
+              value: "${FBC_STORAGE_BUCKET}"
+            - name: FBC_MESSAGING_SENDER_ID
+              value: "${FBC_MESSAGING_SENDER_ID}"
+            - name: FBC_APP_ID
+              value: "${FBC_APP_ID}"
+            - name: FBC_MEASUREMENT_ID
+              value: "${FBC_MEASUREMENT_ID}"
+            - name: KBANK_SECRET_KEY
+              value: "${KBANK_SECRET_KEY}"
+            - name: KBANK_API_URL
+              value: "${KBANK_API_URL}"
+            - name: KBANK_MERCHANT_ID
+              value: "${KBANK_MERCHANT_ID}"
+            - name: TRANSACTION_PREFIX
+              value: "${TRANSACTION_PREFIX}"
+            - name: REDIS_URL
+              value: "${REDIS_URL}"
+            - name: ADMIN_FRONTEND_URL
+              value: "${ADMIN_FRONTEND_URL}"
+            - name: CLIENT_FRONTEND_URL
+              value: "${CLIENT_FRONTEND_URL}"
+            - name: MAREAD_BACKEND_URL
+              value: "${MAREAD_BACKEND_URL}"
+            - name: MAREAD_FRONTEND_URL
+              value: "${MAREAD_FRONTEND_URL}"
+            - name: DOLFIN_API_URL
+              value: "${DOLFIN_API_URL}"
+            - name: DOLFIN_CLIENT_KEY
+              value: "${DOLFIN_CLIENT_KEY}"
+            - name: DOLFIN_SECRET_KEY
+              value: "${DOLFIN_SECRET_KEY}"
+            - name: DOLFIN_MERCHANT_ID
+              value: "${DOLFIN_MERCHANT_ID}"
+            - name: DOLFIN_STORE_CODE
+              value: "${DOLFIN_STORE_CODE}"
+            - name: DOLFIN_APP_ID_APPPAYMENT
+              value: "${DOLFIN_APP_ID_APPPAYMENT}"
+            - name: DOLFIN_APP_ID_QRCODE
+              value: "${DOLFIN_APP_ID_QRCODE}"
+            - name: DOLFIN_AES_KEY_APPPAYMENT
+              value: "${DOLFIN_AES_KEY_APPPAYMENT}"
+            - name: DOLFIN_AES_KEY_QRCODE
+              value: "${DOLFIN_AES_KEY_QRCODE}"
+            - name: DOLFIN_PUBLIC_KEY_APPPAYMENT
+              value: "${DOLFIN_PUBLIC_KEY_APPPAYMENT}"
+            - name: SELF_PRIVATEKEY
+              value: "${SELF_PRIVATEKEY}"
+            - name: LINE_URL
+              value: "${LINE_URL}"
+            - name: LINE_CLIENT_ID
+              value: "${LINE_CLIENT_ID}"
+            - name: APP_STORE_SHARED_SECRET
+              value: "${APP_STORE_SHARED_SECRET}"
+            - name: APP_STORE_ENVIRONMENT
+              value: "${APP_STORE_ENVIRONMENT}"
+            - name: SHOPEE_PAY_CLIENT_ID
+              value: "${SHOPEE_PAY_CLIENT_ID}"
+            - name: SHOPEE_PAY_SECRET_KEY
+              value: "${SHOPEE_PAY_SECRET_KEY}"
+            - name: SHOPEE_PAY_MERCHANT_EX_ID
+              value: "${SHOPEE_PAY_MERCHANT_EX_ID}"
+            - name: SHOPEE_PAY_STORE_EX_ID
+              value: "${SHOPEE_PAY_STORE_EX_ID}"
+            - name: SHOPEE_PAY_URL
+              value: "${SHOPEE_PAY_URL}"
+            - name: MOBILE_PACKAGE_ID
+              value: "${MOBILE_PACKAGE_ID}"
+            - name: PLAYSTORE_SERVICE_ACCOUNT
+              value: |
+                {"type": "service_account","project_id": "pc-api-8684751100670015812-764","private_key_id": "40f6eefd6f9395b5a558cb25a90a6f3617f6ecae","private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCz371uMzViesd5\n264lkPRMb/8TbBja1/QO/OPrYB1xqOa4BWwMWYFEyaRyLz29qdoR3c+RjIDRzEew\n4AT/lzSuYKptl2W6ZALyCC+yhTbJHJKKp2FJIvWvcWtg6oeXKT0MKZYSK27E2uFH\nPswwsEYflWJ61BOtE7o92C6gK0vk0ug7cMkO55xPMselF+oO1lXK8wtC459yz74G\nFVMEzGCwMI2W/YPaoViIwU+kwSfcEhSqgCcqF7K0RmPTCku4FDr75ldZIQaJdYqw\n/CP2y0CsBe7F/e5U4xDvzzyVDfoQN+nbiuXmFaD99Fzvjxj1LerJO8wGKkWBhp+h\nped8aqsrAgMBAAECggEALH3aus/i1A2fmqY6gKNGskN/mfvCeBszjKOD8twO3GbV\nTs5UiAd5oJyp1u6VfHzvajzt00goMvyu/PKked4aU0mozjvFF2IWkmxw89zcjMlK\n/A3j0/XYRIGu+EV6rWqvZXtB2hOxLfMgBwHi+uYXKkfGmLAtf8Gh7xsyiT68YohX\nq98Ly5qEHQeH8g17bIoaqjrCX9rpYy/sbhRQGLW2lop6VzWMElcSQ/8GlniDIqVU\n1+gVfcqaFrwZNhRGHzhfXkw8Ws8+iznJjg4WLB0XJbNkPA9dl5UKFdyn+iFjivBI\nsIXxVLzKylu8lJB0yfdqlsx9UBIpyuMvFKtHOlPNuQKBgQDxzPo7pNUX6kp+j7wS\n11knlIOybkpg5/PF2wblhOxLxBQ0gQ/QACQMFh3ahhT+Fr9YCpwmy/gQfSR2FIVW\n2FXD7BaDYe1DA4OWjThbQ6zAEgw7CzlbrbwiODAgKnnosF2vam+7FKlEzELE5CVV\nv6yZuHEAtnsDRp3O7F6wMV812QKBgQC+b89VbbMa3qfCQYPVu2Cb8JA7kM5Rc7oD\npis00BxbIWydJ7ZctLBAJwlW+vsBFGEv10h1GxeKwjIr/pCjvdKHGJk7WUlEZ3P3\neW93NWajHF0FO+pIRbhGDsp0kGUfapwVdZ7gdR2gpKch7gHmOsC4uvXLb8he2k0C\ndLrLBx8yowKBgQDFMq5BRkSjpGfsn7x6gTYsmWpucpQmRAUDL4WIWcd8YwU3bKpA\nsFy1nrPqK7+jGVojq0N+QIqmp+i8hC/ai8QmbLxPmeWt6Ye/mJyFkcOpQQ7IeHbm\n1eHA5qIZGYsiwfMlxGAq6sbBXPR3LrlkHVXeaBWAx1G7cjPxNcRjXWCQwQJ/Hz44\nxcs5ly7wVu5osqgLMYpGH3+iWbqiyfZ5IDEEde8F4sKhKJR8VgoRfjOu+n5dc3ve\nZ1gKhLlXgeBB2ptJ7uAaQ6JiYtaWMAO8RdJ9BEWi/TjXNwQ5N0U18em+rWjQMrUZ\nW7nbIn/g67Agn6UD+UqzCK1OMkGeYMjF3IlOlQKBgB0fiATQj5pS9H5XgzQjOmiX\n0XOkeKtNv8aaBQOHBY5EdyDnNnJvxanFTu5EsUE8sRmXUlFqQcE8tj3wOsFpizdh\nfLLpIVYTMCrSL6htHgZm5drTkHq4CUloQSaRDNlMGxDhjHiqWOMTYQhBGKRhE45g\nZxk3ZldqDJlaNMho0MmE\n-----END PRIVATE KEY-----\n","client_email": "mareads-verify-purchase@pc-api-8684751100670015812-764.iam.gserviceaccount.com","client_id": "103344196700048553785","auth_uri": "https://accounts.google.com/o/oauth2/auth","token_uri": "https://oauth2.googleapis.com/token","auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mareads-verify-purchase%40pc-api-8684751100670015812-764.iam.gserviceaccount.com"}
+            - name: NAIIN_URL
+              value: "${NAIIN_URL}"
+            - name: NAIIN_ACCESS_TOKEN
+              value: "${NAIIN_ACCESS_TOKEN}"
+            - name: NAIIN_APP_CODE
+              value: "${NAIIN_APP_CODE}"
+            - name: NAIIN_PRIVATE_KEY
+              value: "${NAIIN_PRIVATE_KEY}"
+            - name: NAIIN_ENCRYPTION_ALGORITHM
+              value: "${NAIIN_ENCRYPTION_ALGORITHM}"
+            - name: NAIIN_ENCRYPRION_KEY
+              value: "${NAIIN_ENCRYPRION_KEY}"
+            - name: FIREBASE_DYNAMIC_LINK_API_KEY
+              value: "${FIREBASE_DYNAMIC_LINK_API_KEY}"
+            - name: FIREBASE_DYNAMIC_LINK_PREFIX_URL
+              value: "${FIREBASE_DYNAMIC_LINK_PREFIX_URL}"
+            - name: FBA_TYPE
+              value: "${FBA_TYPE}"
+            - name: FBA_PROJECT_ID
+              value: "${FBA_PROJECT_ID}"
+            - name: FBA_PRIVATE_KEY_ID
+              value: "${FBA_PRIVATE_KEY_ID}"
+            - name: FBA_PRIVATE_KEY
+              value: "${FBA_PRIVATE_KEY}"
+            - name: FBA_CLIENT_EMAIL
+              value: "${FBA_CLIENT_EMAIL}"
+            - name: FBA_CLIENT_ID
+              value: "${FBA_CLIENT_ID}"
+            - name: FBA_AUTH_URI
+              value: "${FBA_AUTH_URI}"
+            - name: FBA_TOKEN_URI
+              value: "${FBA_TOKEN_URI}"
+            - name: FBA_AUTH_PROVIDER_CERT_URL
+              value: "${FBA_AUTH_PROVIDER_CERT_URL}"
+            - name: FBA_CLIENT_CERT_URL
+              value: "${FBA_CLIENT_CERT_URL}"
+            - name: AWS_S3_URL_EXPIRES
+              value: "${AWS_S3_URL_EXPIRES}"
+            - name: AWS_S3_BOOK_INTRO_BASE64_PATH
+              value: "${AWS_S3_BOOK_INTRO_BASE64_PATH}"
+            - name: AWS_S3_BOOK_CHAPTER_WRITER_MESSAGE_BASE64_PATH
+              value: "${AWS_S3_BOOK_CHAPTER_WRITER_MESSAGE_BASE64_PATH}"
+            - name: AWS_S3_CHAPTER_PAGE_CONTENT_BASE64_PATH
+              value: "${AWS_S3_CHAPTER_PAGE_CONTENT_BASE64_PATH}"
+            - name: AWS_S3_BOOK_COVER_IMAGE_BASE64_PATH
+              value: "${AWS_S3_BOOK_COVER_IMAGE_BASE64_PATH}"
+            - name: AWS_S3_CHAPTER_PAGE_IMAGE_BASE64_PATH
+              value: "${AWS_S3_CHAPTER_PAGE_IMAGE_BASE64_PATH}"
+            - name: AWS_S3_USER_AVATAR_IMAGE_BASE64_PATH
+              value: "${AWS_S3_USER_AVATAR_IMAGE_BASE64_PATH}"
+            - name: AWS_S3_BOOK_CHAPTER_COVER_IMAGE_BASE64_PATH
+              value: "${AWS_S3_BOOK_CHAPTER_COVER_IMAGE_BASE64_PATH}"
+            - name: EXPORTED_DATA_CHALLENGE_REPORT_CSV_PREFIX
+              value: "${EXPORTED_DATA_CHALLENGE_REPORT_CSV_PREFIX}"
+            - name: IN_APP_PURCHASE_PRODUCT_NAME_PREFIX
+              value: "${IN_APP_PURCHASE_PRODUCT_NAME_PREFIX}"
+            - name: TRUE_MONEY_URL
+              value: "${TRUE_MONEY_URL}"
+            - name: TRUE_MONEY_PARTNER_SECRET
+              value: "${TRUE_MONEY_PARTNER_SECRET}"
+            - name: API_GENERATE_BOOK_SHARE_IMAGE_URL
+              value: "${API_GENERATE_BOOK_SHARE_IMAGE_URL}"
+            - name: FTP_HOST
+              value: "${FTP_HOST}"
+            - name: FTP_PORT
+              value: "${FTP_PORT}"
+            - name: FTP_USER
+              value: "${FTP_USER}"
+            - name: FTP_PASSWORD
+              value: "${FTP_PASSWORD}"
+            - name: FTP_DIRECTORY
+              value: "${FTP_DIRECTORY}"
+            - name: SENTRY_DSN
+              value: "${SENTRY_DSN}"
+            - name: SENTRY_ENVIRONMENT
+              value: "${SENTRY_ENVIRONMENT}"
+            - name: SENTRY_RELEASE
+              value: "${SENTRY_RELEASE}"
+            - name: MAINTENANCE
+              value: "${MAINTENANCE}"
+            - name: REDIS_HOST
+              value: "${REDIS_HOST}"
+            - name: REDIS_PORT
+              value: "${REDIS_PORT}"
+            - name: MAINTENANCE_KEY
+              value: "${MAINTENANCE_KEY}"
+            - name: EMAIL_ADMIN_RECEIVE
+              value: "${EMAIL_ADMIN_RECEIVE}"
+            - name: API_CALCULATE_WORD_COUNT
+              value: "${API_CALCULATE_WORD_COUNT}"
+            - name: APP_STORE_SHARED_SECRET_SANDBOX
+              value: "${APP_STORE_SHARED_SECRET_SANDBOX}"
+            - name: FBC_ANDROID_PACKAGE_NAME
+              value: "${FBC_ANDROID_PACKAGE_NAME}"
+            - name: FBC_IOS_BUNDLE_ID
+              value: "${FBC_IOS_BUNDLE_ID}"
+          ports:
+            - containerPort: 3010

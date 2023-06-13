@@ -1,0 +1,9 @@
+resources:
+- deployment.yaml
+- service.yaml
+- redis-deployment.yaml
+
+images:
+- name: amazonaws.com/maread-backend
+  newName: ${ECR_REPOSITORY}
+  newTag: ${IMAGE_TAG}

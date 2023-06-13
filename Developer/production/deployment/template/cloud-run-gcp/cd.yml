@@ -1,0 +1,45 @@
+name: Build and Deploy
+on:
+    push:
+        branches: [develop]
+
+jobs:
+    build-and-deploy:
+        name: Build and Deploy Image to Cloud Run
+        runs-on: ubuntu-20.04
+        env:
+            SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+            PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - uses: google-github-actions/setup-gcloud@v0
+              with:
+                  service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
+                  project_id: ${{ secrets.PROJECT_ID }}
+                  export_default_credentials: true
+
+            - name: Build Image
+              run: |
+                  docker build -t asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA .
+            - name: Gcloud Authentication
+              run: |
+                  gcloud auth configure-docker -q
+            - name: 'Remove all container'
+              run: |
+                  gcloud container images list-tags asia.gcr.io/$PROJECT_ID/$SERVICE_NAME  --format="get(digest)" --limit=1 --sort-by="timestamp"> tags && while read p; do gcloud container images delete "asia.gcr.io/$PROJECT_ID/$SERVICE_NAME@$p" --quiet --force-delete-tags; done < tags
+            - name: Deploy Image to Container Registry
+              run: |
+                  docker push asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA
+            - name: Deploy Cloud Run
+              run: |
+                  gcloud --quiet beta run deploy $SERVICE_NAME --image asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA \
+                  --platform managed \
+                  --allow-unauthenticated \
+                  --cpu 2 \
+                  --memory 6G \
+                  --region asia-southeast1 \
+                  --max-instances 5 \
+                  --port 8080 \
+                  --timeout 10m
