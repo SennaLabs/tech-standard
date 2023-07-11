@@ -1,28 +1,6 @@
 # UI Testing
 
-## What is UI Testing?
-
 UI testing is a type of software testing that focuses on the user interface (UI) of an application. It involves testing the application's graphical user interface to ensure that it meets the specified requirements and works as expected.
-
-## Importance of UI Testing
-
-UI testing is used to verify the functionality of an application and ensure that the display is correct. It also helps to identify and fix any issues or bugs in the system, ensuring that it performs efficiently and accurately before delivering it to customers or actual users.
-
-## UI Testing Approaches
-
-UI tests can be conducted manually or automatically. Testers can make a choice between either technique or implementing both, depending on the nature of the application as well as the team itself.
-
-### Manual Testing
-
-Manual testing is a UI testing approach where testers manually execute test cases without the use of any automation tools. This approach is time-consuming and prone to human errors, but it is useful for testing small applications or features.
-
-### Automated Testing
-
-Automated testing is a UI testing approach where testers use automation tools to execute test cases. This approach is faster and more reliable than manual testing, but it requires more effort to set up and maintain the automation framework.
-
-## Benefits of UI Testing
-
-The benefits of UI testing include improved user experience, increased customer satisfaction and reduced development costs.
 
 ## The Scope of UI Testing
 
@@ -38,6 +16,53 @@ The scope of UI testing typically includes verifying the functionality and usabi
 
 -   Progress bars: The test checks that when displaying pages or screens that take time to load completely, a progress bar appears to let the user know that the page is loading.
 
+## UI Testing Approaches
+
+UI tests can be conducted manually or automatically. Testers can make a choice between either technique or implementing both, depending on the nature of the application as well as the team itself.
+
+### Manual Testing
+
+Manual testing is a UI testing approach where testers manually execute test cases without the use of any automation tools. This approach is time-consuming and prone to human errors, but it is useful for testing small applications or features.
+
+### Automated Testing
+
+Automated testing is a UI testing approach where testers use automation tools to execute test cases. This approach is faster and more reliable than manual testing, but it requires more effort to set up and maintain the automation framework.
+
 ## Tools and Frameworks for UI Testing
 
-There are various tools and frameworks available for UI testing. Here are some commonly used ones, including Selenium, Cypress, Playwright, Katalon Studio, and Robot Framework
+There are various tools and frameworks available for UI testing. Here are some commonly used ones, including [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev/), [Katalon Studio](https://katalon.com/), [Selenium](https://www.selenium.dev/), and [Robot Framework](https://robotframework.org/)
+
+## Create a test plan
+
+To conduct comprehensive user interface testing, QA teams need to create a test plan that specifies the features of the application or website to be tested. By creating test scenarios, test cases, and test scripts to solve the necessary problems.
+
+### Test scenario
+
+A test scenario is defined as any functionality that can be tested. It is a collective set of test cases that helps the testing team determine the positive and negative characteristics of the project.
+
+![Test scenario](./docs/ui-testing/test_scenario.png)
+
+#### Tips to create test scenarios
+
+-   Keep the scenario descriptions simple and easy to understand.
+-   Carefully assess the stated requirements before creating scenarios.
+-   Gather the required tools and resources for testing before initiating the testing process.
+
+### Test case
+
+A test case is a set of actions executed to verify a particular feature or functionality of the software application. It contains test steps, test data and test conditions developed for a specific test scenario to verify any requirement.
+
+![Test case](./docs/ui-testing/test_case.png)
+
+#### Tips to create test cases
+
+-   Ensure test cases are simple and clear.
+-   Create a test case with the end user in mind.
+-   Avoid duplicating test cases unnecessarily.
+-   Do not assume functionality and features of your software application while preparing test case. Stick to the Specification Documents.
+
+## Template
+
+<a href="./docs/ui-testing/test_scenario_template.xlsx" download="file.xlsx">Download test scenario template</a>
+
+<a href="./docs/ui-testing/test_case_template.xlsx" download="file.xlsx">Download test case template</a>
