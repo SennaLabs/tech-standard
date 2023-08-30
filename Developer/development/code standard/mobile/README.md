@@ -67,3 +67,27 @@
     - main.dart
       
       this file is entry dart files for initialise app at first run.
+
+
+## App Structure Design
+
+- Folder structure
+  
+  we used folder by feature and folder by types both, We call hybride folder structure as we describe above.
+  
+- System Architecture
+  
+  we used mvp as System Architecture to loosely coupled between each module as below
+
+   - Model
+      
+     this Model represent to data model that will come from data source such as back-end api, third party api, local storage.
+     
+   - View
+      
+     this View represent to View only [UI] module such as html/ jsx without business logic.
+     
+   - Presenter
+      
+     this Presenter represent to controller of view and model to communicate each other.
+
