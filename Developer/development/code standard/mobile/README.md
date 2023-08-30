@@ -77,7 +77,7 @@
   
 - System Architecture
   
-  we used mvp as System Architecture to loosely coupled between each module as below
+  we used MVP as System Architecture to loosely coupled between each module as below
 
    - Model
       
