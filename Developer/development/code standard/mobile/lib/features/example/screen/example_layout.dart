@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tooling/core/enum/network_status.dart';
-import 'package:tooling/core/models/example/photo.dart';
+import 'package:tooling/core/models/models.dart';
 import 'package:tooling/core/widgets/example/example_card.dart';
 import 'package:tooling/features/example/cubit/example_cubit.dart';
 import 'package:google_fonts/google_fonts.dart';

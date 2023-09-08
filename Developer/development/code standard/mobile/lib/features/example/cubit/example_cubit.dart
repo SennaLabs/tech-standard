@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tooling/core/api/example/collections/photos_collection/get_photos.dart';
 import 'package:tooling/core/enum/export.dart';
-import 'package:tooling/core/models/example/photo.dart';
+import 'package:tooling/core/models/models.dart';
 
 part 'example_state.dart';
 
