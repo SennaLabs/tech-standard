@@ -1,0 +1,75 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tooling/core/models/penname/penname_model.dart';
+
+part "user_model.freezed.dart";
+
+part "user_model.g.dart";
+
+@freezed
+class UserModel with _$UserModel {
+  const factory UserModel({
+    @Default(0) int id,
+    @Default("") String mobilePin,
+    @Default("") String avatarImgPath,
+    @Default("") String bannerImgPath,
+    @Default("") String idNumber,
+    @Default("") String fullName,
+    @Default("") String email,
+    @Default("") String phoneNumber,
+    @Default("") String birthDay,
+    @Default("") String gender,
+    @Default(false) bool isSubscribe,
+    @Default(false) bool isAcceptPolicy,
+    @Default(false) bool isBan,
+    @Default("") String username,
+    @Default("") String displayName,
+    @Default("") String facebookLink,
+    @Default("") String twitterLink,
+    @Default(0) double currentFreeCoin,
+    @Default(0) double currentPaidCoin,
+    @Default("") String profilePageSlug,
+    @Default("") String aboutMe,
+    @Default(false) bool allowReadLikeHistory,
+    @Default(false) bool allowSendMessage,
+    @Default(false) bool allowShowCoinUsage,
+    @Default(0) int totalFollowing,
+    @Default(0) int totalFollower,
+    @Default(0) int totalBook,
+    @Default(0) int totalBookshelf,
+    @Default(0) int totalRead,
+    @Default(false) bool usernameEditable,
+    @Default(false) bool emailEditable,
+    @Default("") String ageVerifyRejectedReason,
+    @Default("") String idCardImgPath,
+    @Default(false) bool newBookNotification,
+    @Default(false) bool newChapterNotification,
+    @Default(false) bool contentUpdatedNotification,
+    @Default(false) bool commentRepliedNotification,
+    @Default(false) bool bookEndedNotification,
+    @Default(false) bool pushNotification,
+    @Default(false) bool mareadsEmailNotification,
+    @Default(false) bool coinPurchasedEmailNotification,
+    @Default(false) bool coinUsedEmailNotification,
+    @Default("") String createdAt,
+    @Default("") String updatedAt,
+    @Default(false) bool subscribedWriterNotification,
+    @Default(false) bool commentedWriterNotification,
+    @Default(false) bool likedWriterNotification,
+    @Default(false) bool taggedWriterNotification,
+    @Default(false) bool supportedWriterNotification,
+    @Default(false) bool pushWriterNotification,
+    @Default(false) bool mareadsEmailWriterNotification,
+    @Default(false) bool salesSummaryWriterNotification,
+    @Default(false) bool isFollowed,
+    @Default(false) bool isAdmin,
+    @Default(false) bool writingDisabled,
+    @Default(<PenNameModel>[]) List<PenNameModel> penName,
+    @Default(false) bool iosHomeBannerEnable,
+    @Default(false) bool androidHomeBannerEnable,
+    @Default(false) bool iosCoinBannerEnable,
+    @Default(false) bool androidCoinBannerEnable,
+    @Default(false) bool isPermanentBan,
+  }) = _UserModel;
+
+  factory UserModel.fromJson(Map<String, Object?> json) => _$UserModelFromJson(json);
+}

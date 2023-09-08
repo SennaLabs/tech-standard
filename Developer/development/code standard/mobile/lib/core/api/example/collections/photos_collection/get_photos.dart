@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:tooling/core/api/dio_service.dart';
-import 'package:tooling/core/models/example/photo.dart';
+import 'package:tooling/core/services/dio_service.dart';
+import 'package:tooling/core/models/models.dart';
 
 Future<List<Photo>> getPhoto({int albumId = 1}) async {
   final String key = dotenv.env['EXAMPLE_API'] ?? '';
