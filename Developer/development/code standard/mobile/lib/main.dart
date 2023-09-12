@@ -6,6 +6,7 @@ import 'package:tooling/config/app_routes.dart';
 import 'package:tooling/core/blocs/user_bloc/user_bloc.dart';
 import 'package:tooling/core/services/graph_ql/gql_service.dart';
 import 'package:tooling/core/theme/app_theme.dart';
+import 'package:tooling/features/app_layout/cubit/app_layout_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,9 +32,12 @@ class AppInit extends StatelessWidget {
           child: MultiBlocProvider(
             // Set up a provider, that's public type only, here.
             providers: [
-              BlocProvider(
+              BlocProvider<UserBloc>(
                 lazy: false,
                 create: (context) => UserBloc(),
+              ),
+              BlocProvider<AppLayoutCubit>(
+                create: (context) => AppLayoutCubit(),
               ),
             ],
             child: const MyApp(),
@@ -64,9 +68,9 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.white,
         primaryColor: const Color(0xFF3f54d9),
         textTheme: ThemeData.light().textTheme.copyWith(
-          bodyLarge: AppTheme.font.sarabunS14,
-          bodyMedium: AppTheme.font.mitrS14,
-        ),
+              bodyLarge: AppTheme.font.sarabunS14,
+              bodyMedium: AppTheme.font.mitrS14,
+            ),
         checkboxTheme: CheckboxThemeData(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(5)),
