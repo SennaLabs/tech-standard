@@ -73,6 +73,14 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // bloc selector handle state change and rebuild widget
+    // ignore: unused_local_variable
+    final hasIndex = context.select((AppLayoutCubit b) => b.state.bottomBarIndex >= 0);
+
+    // use when need to get state from cubit and rebuild widget but not handle state change
+    // ignore: unused_local_variable
+    final bottomBarIndex = context.watch<AppLayoutCubit>().state.bottomBarIndex;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,

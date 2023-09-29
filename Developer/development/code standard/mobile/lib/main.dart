@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:tooling/config/app_routes.dart';
 import 'package:tooling/core/blocs/user_bloc/user_bloc.dart';
 import 'package:tooling/core/services/graph_ql/gql_service.dart';
@@ -11,6 +13,8 @@ import 'package:tooling/features/app_layout/cubit/app_layout_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  HydratedBloc.storage =
+      await HydratedStorage.build(storageDirectory: await getTemporaryDirectory());
   runApp(const AppInit());
 }
 
